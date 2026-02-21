@@ -1022,6 +1022,7 @@ declare global {
         "frame:bordercolor"?: string;
         "frame:activebordercolor"?: string;
         "frame:title"?: string;
+        "frame:label"?: string;
         "frame:icon"?: string;
         "frame:text"?: string;
         "cmd:*"?: boolean;

@@ -34,6 +34,7 @@ const (
 	MetaKey_FrameBorderColor                 = "frame:bordercolor"
 	MetaKey_FrameActiveBorderColor           = "frame:activebordercolor"
 	MetaKey_FrameTitle                       = "frame:title"
+	MetaKey_FrameLabel                       = "frame:label"
 	MetaKey_FrameIcon                        = "frame:icon"
 	MetaKey_FrameText                        = "frame:text"
 

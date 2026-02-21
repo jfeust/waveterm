@@ -33,6 +33,7 @@ type MetaTSType struct {
 	FrameBorderColor       string `json:"frame:bordercolor,omitempty"`
 	FrameActiveBorderColor string `json:"frame:activebordercolor,omitempty"`
 	FrameTitle             string `json:"frame:title,omitempty"`
+	FrameLabel             string `json:"frame:label,omitempty"`
 	FrameIcon              string `json:"frame:icon,omitempty"`
 	FrameText              string `json:"frame:text,omitempty"`
 
