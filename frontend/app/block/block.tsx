@@ -9,6 +9,8 @@ import {
     FullSubBlockProps,
     SubBlockProps,
 } from "@/app/block/blocktypes";
+import type { TabModel } from "@/app/store/tab-model";
+import { useTabModel } from "@/app/store/tab-model";
 import { AiFileDiffViewModel } from "@/app/view/aifilediff/aifilediff";
 import { LauncherViewModel } from "@/app/view/launcher/launcher";
 import { PreviewModel } from "@/app/view/preview/preview-model";
@@ -26,10 +28,8 @@ import {
     registerBlockComponentModel,
     unregisterBlockComponentModel,
 } from "@/store/global";
-import type { TabModel } from "@/app/store/tab-model";
-import { useTabModel } from "@/app/store/tab-model";
 import { getWaveObjectAtom, makeORef, useWaveObjectValue } from "@/store/wos";
-import { focusedBlockId, getElemAsStr } from "@/util/focusutil";
+import { focusedBlockId, getElemAsStr, isBlockLabelEditActive } from "@/util/focusutil";
 import { isBlank, useAtomValueSafe } from "@/util/util";
 import { HelpViewModel } from "@/view/helpview/helpview";
 import { TermViewModel } from "@/view/term/term-model";
@@ -235,6 +235,9 @@ const BlockFull = memo(({ nodeModel, viewModel }: FullBlockProps) => {
                 focusFollowsCursorMode === "on" ||
                 (focusFollowsCursorMode === "term" && blockData?.meta?.view === "term");
             if (!focusFollowsCursorEnabled || event.pointerType === "touch" || event.buttons > 0) {
+                return;
+            }
+            if (isBlockLabelEditActive()) {
                 return;
             }
             if (modalOpen || disablePointerEvents || isResizing || (anyMagnified && !isMagnified)) {

@@ -68,3 +68,7 @@ export function focusedBlockId(): string {
     }
     return null;
 }
+
+export function isBlockLabelEditActive(): boolean {
+    return document.querySelector(".block-frame-label-input") != null;
+}

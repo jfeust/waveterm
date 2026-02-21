@@ -7,6 +7,7 @@ import { ErrorBoundary } from "@/app/element/errorboundary";
 import { atoms, getSettingsKeyAtom } from "@/app/store/global";
 import { globalStore } from "@/app/store/jotaiStore";
 import { maybeUseTabModel } from "@/app/store/tab-model";
+import { isBlockLabelEditActive } from "@/util/focusutil";
 import { checkKeyPressed, keydownWrapper } from "@/util/keyutil";
 import { isMacOS, isWindows } from "@/util/platformutil";
 import { cn } from "@/util/util";
@@ -514,6 +515,7 @@ const AIPanelComponentInner = memo(() => {
         (event: React.PointerEvent<HTMLDivElement>) => {
             if (focusFollowsCursorMode !== "on") return;
             if (event.pointerType === "touch" || event.buttons > 0) return;
+            if (isBlockLabelEditActive()) return;
             if (isFocused) return;
             model.focusInput();
         },
